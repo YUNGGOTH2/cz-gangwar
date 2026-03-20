@@ -34,22 +34,26 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/10 py-4' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-neon-red rounded-lg flex items-center justify-center glow-red rotate-3">
-            <Sword className="text-white w-6 h-6" />
+        <div className="flex items-center gap-4">
+          <div className="h-16 md:h-20 flex items-center justify-center">
+            <img 
+              src="https://i.imgur.com/k1zlu98.png" 
+              alt="CZ Gangwar Logo" 
+              className="h-full w-auto object-contain drop-shadow-[0_0_15px_rgba(0,212,255,0.3)]"
+              referrerPolicy="no-referrer"
+            />
           </div>
-          <span className="font-display text-2xl tracking-tighter uppercase italic">CZ <span className="text-neon-red">Gangwar</span></span>
         </div>
         
         <div className="hidden md:flex items-center gap-8 text-sm font-medium uppercase tracking-widest">
-          <a href="#home" className="hover:text-neon-red transition-colors">Home</a>
+          <a href="#home" className="hover:text-neon-blue transition-colors">Home</a>
           <a href="#sneak-peek" className="hover:text-neon-purple transition-colors">Sneak Peek</a>
           <a href="#mods" className="hover:text-neon-blue transition-colors">Mods</a>
-          <a href="#support" className="hover:text-neon-red transition-colors">Support</a>
+          <a href="#support" className="hover:text-neon-blue transition-colors">Support</a>
           <a href="#server-info" className="hover:text-neon-purple transition-colors">Server Info</a>
         </div>
 
-        <button className="bg-white text-black px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-neon-red hover:text-white transition-all duration-300">
+        <button className="bg-white text-black px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-neon-blue hover:text-white transition-all duration-300">
           Play Now
         </button>
       </div>
@@ -61,12 +65,16 @@ const Hero = () => {
   return (
     <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0a0a0a] to-black"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-neon-red/10 rounded-full blur-[120px] animate-pulse"></div>
-        <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-neon-purple/5 rounded-full blur-[100px]"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-neon-blue/5 rounded-full blur-[100px]"></div>
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat grayscale-[0.4] brightness-[0.25]"
+          style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&q=80&w=1920")' }}
+        ></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-black"></div>
         
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-neon-blue/10 rounded-full blur-[120px] animate-pulse"></div>
+        <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-neon-purple/5 rounded-full blur-[100px]"></div>
+        
+        <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]"></div>
       </div>
 
       <div className="relative z-10 text-center px-6">
@@ -76,7 +84,7 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
         >
           <h1 className="font-display text-7xl md:text-9xl uppercase italic tracking-tighter mb-4">
-            CZ <span className="text-neon-red text-glow-red">Gangwar</span>
+            CZ <span className="text-neon-blue text-glow-blue">Gangwar</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/60 font-light tracking-widest uppercase mb-12">
             The Ultimate Gang War Experience
@@ -85,7 +93,7 @@ const Hero = () => {
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
             <a 
               href="#sneak-peek"
-              className="group relative px-10 py-4 bg-neon-red text-white font-bold uppercase tracking-widest overflow-hidden transition-all hover:scale-105 active:scale-95 glow-red"
+              className="group relative px-10 py-4 bg-neon-blue text-white font-bold uppercase tracking-widest overflow-hidden transition-all hover:scale-105 active:scale-95 glow-blue"
             >
               <span className="relative z-10 flex items-center gap-2">
                 Sneak Peek <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -234,111 +242,73 @@ const InventoryMockup = () => {
 };
 
 const SneakPeek = () => {
-  const features = [
-    {
-      title: "Gang Wars",
-      desc: "Intense large-scale battles for dominance and respect.",
-      icon: Sword,
-      color: "text-neon-red",
-      bg: "bg-neon-red/10",
-      border: "border-neon-red/20"
-    },
-    {
-      title: "Territory Control",
-      desc: "Capture and defend strategic zones across the city.",
-      icon: Map,
-      color: "text-neon-purple",
-      bg: "bg-neon-purple/10",
-      border: "border-neon-purple/20"
-    },
-    {
-      title: "Custom Scripts",
-      desc: "Unique mechanics built from scratch for the best gameplay.",
-      icon: Code,
-      color: "text-neon-blue",
-      bg: "bg-neon-blue/10",
-      border: "border-neon-blue/20"
-    },
-    {
-      title: "Economy System",
-      desc: "Balanced financial system to fuel your gang's growth.",
-      icon: Coins,
-      color: "text-neon-red",
-      bg: "bg-neon-red/10",
-      border: "border-neon-red/20"
-    },
-    {
-      title: "Kill Leaderboard",
-      desc: "Track your performance and climb the global rankings.",
-      icon: Trophy,
-      color: "text-neon-purple",
-      bg: "bg-neon-purple/10",
-      border: "border-neon-purple/20"
-    },
-    {
-      title: "Custom Inventory",
-      desc: "Modern, grid-based inventory with weight management.",
-      icon: Package,
-      color: "text-neon-blue",
-      bg: "bg-neon-blue/10",
-      border: "border-neon-blue/20"
-    }
-  ];
-
   return (
     <section id="sneak-peek" className="py-24 px-6 bg-[#080808]">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
-          <h2 className="font-display text-5xl uppercase italic mb-4">Sneak <span className="text-neon-purple">Peek</span></h2>
-          <div className="w-24 h-1 bg-neon-purple mx-auto"></div>
+          <h2 className="font-display text-5xl uppercase italic mb-4">Sneak <span className="text-neon-blue">Peek</span></h2>
+          <div className="w-24 h-1 bg-neon-blue mx-auto"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
-          {features.map((f, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ y: -10 }}
-              className={`p-8 rounded-2xl border ${f.border} ${f.bg} backdrop-blur-sm transition-all`}
-            >
-              <f.icon className={`${f.color} w-12 h-12 mb-6`} />
-              <h3 className="text-xl font-bold uppercase mb-4 tracking-tight">{f.title}</h3>
-              <p className="text-white/60 leading-relaxed">{f.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="flex flex-col gap-6"
           >
-            <div className="p-1 bg-gradient-to-r from-neon-blue to-neon-purple rounded-xl overflow-hidden shadow-[0_0_30px_rgba(0,212,255,0.2)]">
-              <div className="bg-[#050505] rounded-lg p-2">
-                <LeaderboardMockup />
+            <div className="group relative aspect-video rounded-3xl overflow-hidden border border-white/10 glow-blue shadow-[0_0_30px_rgba(0,212,255,0.1)]">
+              <img 
+                src="https://i.imgur.com/i3Nf4qt.png" 
+                alt="Kill Leaderboard" 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
+                <div>
+                  <p className="text-white font-bold uppercase tracking-widest mb-1">Kill Leaderboard</p>
+                  <p className="text-white/60 text-xs uppercase tracking-tighter">Track your K/D and climb the ranks</p>
+                </div>
               </div>
             </div>
-            <div className="pl-4 border-l-2 border-neon-blue">
-              <h4 className="text-2xl font-bold uppercase italic mb-2 tracking-tight">Competitive Leaderboards</h4>
-              <p className="text-white/60">See where you stand against the city's most dangerous players. Real-time K/D tracking and global rankings.</p>
+            <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
+              <h4 className="text-neon-blue font-bold uppercase tracking-widest text-sm mb-3 flex items-center gap-2">
+                <Trophy className="w-4 h-4" /> Competitive Edge
+              </h4>
+              <p className="text-white/70 text-sm leading-relaxed">
+                Stay on top of the competition with our real-time Kill Leaderboard. Track your kills, deaths, and K/D ratio as you dominate the streets. The system ranks players dynamically, ensuring that the most skilled warriors are recognized across the entire server.
+              </p>
             </div>
           </motion.div>
 
           <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            transition={{ delay: 0.2 }}
+            className="flex flex-col gap-6"
           >
-            <div className="p-1 bg-gradient-to-r from-neon-purple to-neon-red rounded-xl overflow-hidden shadow-[0_0_30px_rgba(157,0,255,0.2)]">
-              <div className="bg-[#050505] rounded-lg p-2">
-                <InventoryMockup />
+            <div className="group relative aspect-video rounded-3xl overflow-hidden border border-white/10 glow-blue shadow-[0_0_30px_rgba(0,212,255,0.1)]">
+              <img 
+                src="https://i.imgur.com/zmCrTMp.png" 
+                alt="Inventory System" 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
+                <div>
+                  <p className="text-white font-bold uppercase tracking-widest mb-1">Inventory System</p>
+                  <p className="text-white/60 text-xs uppercase tracking-tighter">Advanced grid-based gear management</p>
+                </div>
               </div>
             </div>
-            <div className="pl-4 border-l-2 border-neon-purple">
-              <h4 className="text-2xl font-bold uppercase italic mb-2 tracking-tight">Advanced Inventory</h4>
-              <p className="text-white/60">A clean, intuitive interface for managing your gear. Drag-and-drop mechanics with realistic weight limits.</p>
+            <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
+              <h4 className="text-neon-blue font-bold uppercase tracking-widest text-sm mb-3 flex items-center gap-2">
+                <Package className="w-4 h-4" /> System Overview
+              </h4>
+              <p className="text-white/70 text-sm leading-relaxed">
+                Our custom-built inventory system allows for seamless gear management. Organize your weapons, armor, and consumables with a modern grid interface. Features include quick-drag functionality, detailed item stats, and real-time weight tracking to keep your loadout optimized for the gangwar.
+              </p>
             </div>
           </motion.div>
         </div>
@@ -392,15 +362,15 @@ const AllowedMods = () => {
 
           <div className="p-8 bg-white/5 border border-white/10 rounded-3xl backdrop-blur-sm">
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-10 h-10 rounded-lg bg-neon-red/20 flex items-center justify-center">
-                <AlertTriangle className="text-neon-red w-6 h-6" />
+              <div className="w-10 h-10 rounded-lg bg-neon-blue/20 flex items-center justify-center">
+                <AlertTriangle className="text-neon-blue w-6 h-6" />
               </div>
               <h3 className="text-2xl font-bold uppercase italic tracking-tight">Forbidden Mods</h3>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {forbidden.map((mod, i) => (
                 <div key={i} className="flex items-center gap-3 text-white/60">
-                  <div className="w-1.5 h-1.5 rounded-full bg-neon-red"></div>
+                  <div className="w-1.5 h-1.5 rounded-full bg-neon-blue"></div>
                   <span className="text-sm font-medium uppercase tracking-wider">{mod}</span>
                 </div>
               ))}
@@ -411,11 +381,11 @@ const AllowedMods = () => {
         <motion.div 
           initial={{ scale: 0.95, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
-          className="p-8 border-2 border-neon-red bg-neon-red/10 rounded-3xl text-center glow-red"
+          className="p-8 border-2 border-neon-blue bg-neon-blue/10 rounded-3xl text-center glow-blue"
         >
-          <h4 className="text-3xl font-display uppercase italic mb-4 text-neon-red text-glow-red">Zero Tolerance Policy</h4>
+          <h4 className="text-3xl font-display uppercase italic mb-4 text-neon-blue text-glow-blue">Zero Tolerance Policy</h4>
           <p className="text-xl font-bold uppercase tracking-[0.2em] text-white">
-            ANY USE OF CHEATS RESULTS IN A <span className="text-neon-red underline decoration-2 underline-offset-8">PERMANENT BAN</span>
+            ANY USE OF CHEATS RESULTS IN A <span className="text-neon-blue underline decoration-2 underline-offset-8">PERMANENT BAN</span>
           </p>
         </motion.div>
       </div>
@@ -427,10 +397,10 @@ const Support = () => {
   return (
     <section id="support" className="py-24 px-6 bg-[#050505]">
       <div className="max-w-4xl mx-auto text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neon-red/10 border border-neon-red/20 text-neon-red text-xs font-bold uppercase tracking-widest mb-8">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neon-blue/10 border border-neon-blue/20 text-neon-blue text-xs font-bold uppercase tracking-widest mb-8">
           <MessageSquare className="w-4 h-4" /> Support System
         </div>
-        <h2 className="font-display text-5xl md:text-6xl uppercase italic mb-8">Need <span className="text-neon-red">Help?</span></h2>
+        <h2 className="font-display text-5xl md:text-6xl uppercase italic mb-8">Need <span className="text-neon-blue">Help?</span></h2>
         <p className="text-xl text-white/60 mb-12 leading-relaxed">
           Our dedicated staff team is available 24/7 to assist you. 
           Whether it's a technical issue, a player report, or a general question, 
@@ -441,7 +411,7 @@ const Support = () => {
           href="https://discord.gg/YwRwyQq5"
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative inline-block px-12 py-5 bg-white text-black font-black uppercase tracking-[0.3em] text-sm overflow-hidden transition-all hover:bg-neon-red hover:text-white glow-red"
+          className="group relative inline-block px-12 py-5 bg-white text-black font-black uppercase tracking-[0.3em] text-sm overflow-hidden transition-all hover:bg-neon-blue hover:text-white glow-blue"
         >
           <span className="relative z-10">Open Ticket</span>
         </a>
@@ -454,7 +424,7 @@ const Support = () => {
 
 const ServerInfo = () => {
   const stats = [
-    { label: "Server Status", value: "Offline", icon: Activity, color: "text-neon-red" },
+    { label: "Server Status", value: "Offline", icon: Activity, color: "text-neon-blue" },
     { label: "Players", value: "0 / 64", icon: Users, color: "text-neon-purple" },
     { label: "Server IP", value: "Under Maintenance", icon: Server, color: "text-neon-blue" }
   ];
@@ -482,16 +452,15 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-12 mb-16">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-neon-red rounded flex items-center justify-center glow-red">
-              <Sword className="text-white w-5 h-5" />
+            <div className="w-16 h-16 flex items-center justify-center">
+              <img 
+                src="https://i.imgur.com/k1zlu98.png" 
+                alt="CZ Logo" 
+                className="w-full h-full object-contain glow-blue"
+                referrerPolicy="no-referrer"
+              />
             </div>
-            <span className="font-display text-xl tracking-tighter uppercase italic">CZ <span className="text-neon-red">Gangwar</span></span>
-          </div>
-
-          <div className="flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-white/40">
-            <a href="#" className="hover:text-white transition-colors">Rules</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <span className="font-display text-xl tracking-tighter uppercase italic">CZ <span className="text-neon-blue">Gangwar</span></span>
           </div>
 
           <div className="flex items-center gap-6">
@@ -499,15 +468,9 @@ const Footer = () => {
               href="https://discord.gg/YwRwyQq5" 
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-neon-purple hover:text-white transition-all"
+              className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-neon-purple hover:text-white transition-all glow-purple"
             >
-              <MessageSquare className="w-5 h-5" />
-            </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-neon-blue hover:text-white transition-all">
-              <Twitter className="w-5 h-5" />
-            </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-neon-red hover:text-white transition-all">
-              <Github className="w-5 h-5" />
+              <MessageSquare className="w-6 h-6" />
             </a>
           </div>
         </div>
@@ -522,7 +485,7 @@ const Footer = () => {
 
 export default function App() {
   return (
-    <div className="min-h-screen selection:bg-neon-red selection:text-white">
+    <div className="min-h-screen selection:bg-neon-blue selection:text-white">
       <Navbar />
       <main>
         <Hero />
