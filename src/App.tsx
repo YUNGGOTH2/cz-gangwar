@@ -21,7 +21,6 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 
-// --- Components ---
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -61,14 +60,12 @@ const Navbar = () => {
 const Hero = () => {
   return (
     <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Placeholder Background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0a0a0a] to-black"></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-neon-red/10 rounded-full blur-[120px] animate-pulse"></div>
         <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-neon-purple/5 rounded-full blur-[100px]"></div>
         <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-neon-blue/5 rounded-full blur-[100px]"></div>
         
-        {/* Grid Pattern */}
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
       </div>
 
@@ -310,7 +307,6 @@ const SneakPeek = () => {
           ))}
         </div>
 
-        {/* UI Showcase Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
@@ -377,7 +373,6 @@ const AllowedMods = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          {/* Allowed Mods */}
           <div className="p-8 bg-white/5 border border-white/10 rounded-3xl backdrop-blur-sm">
             <div className="flex items-center gap-3 mb-8">
               <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
@@ -395,7 +390,6 @@ const AllowedMods = () => {
             </div>
           </div>
 
-          {/* Forbidden Mods */}
           <div className="p-8 bg-white/5 border border-white/10 rounded-3xl backdrop-blur-sm">
             <div className="flex items-center gap-3 mb-8">
               <div className="w-10 h-10 rounded-lg bg-neon-red/20 flex items-center justify-center">
@@ -539,7 +533,6 @@ export default function App() {
       </main>
       <Footer />
       
-      {/* Global Background Noise / Texture */}
       <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.03] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]"></div>
     </div>
   );
