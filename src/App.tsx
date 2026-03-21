@@ -72,10 +72,6 @@ const Navbar = ({ lang, setLang }: { lang: Language, setLang: (l: Language) => v
               <img src="https://flagcdn.com/w80/gb.png" alt="English" className="w-full h-full object-cover" />
             </button>
           </div>
-
-          <button className="bg-white text-black px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-neon-blue hover:text-white transition-all duration-300">
-            {t.playNow}
-          </button>
         </div>
       </div>
     </nav>
