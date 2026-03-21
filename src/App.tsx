@@ -446,6 +446,59 @@ const ServerInfo = () => {
   );
 };
 
+const Staff = () => {
+  const staffMembers = [
+    { name: "GrujkoBoss", role: "Server Owner", image: "https://i.imgur.com/6DyhDQB.png" },
+    { name: "Svizer", role: "Server Owner", image: "https://i.imgur.com/BW8dytD.png" },
+    { name: "YUNG", role: "Web developer", image: "https://i.imgur.com/2Elmti5.png" },
+    { name: "Maki", role: "Developer", image: "https://i.imgur.com/HHFQoV2.png" },
+    { name: "riri", role: "Co Owner", image: "https://i.imgur.com/1AqaP4n.png" }
+  ];
+
+  return (
+    <section id="staff" className="py-24 px-6 bg-[#050505]">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-20">
+          <h2 className="font-display text-5xl uppercase italic mb-4">Server <span className="text-neon-blue">Owners</span></h2>
+          <div className="w-24 h-1 bg-neon-blue mx-auto mb-6"></div>
+          <p className="text-white/60 max-w-2xl mx-auto uppercase tracking-widest text-xs">The team behind the ultimate gangwar experience</p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          {staffMembers.map((member, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="group relative"
+            >
+              <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/10 glow-blue transition-all group-hover:border-neon-blue/50">
+                <img 
+                  src={member.image} 
+                  alt={member.name} 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80"></div>
+                
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <div className="flex items-center gap-2 mb-1">
+                    <ShieldCheck className="w-3 h-3 text-neon-blue" />
+                    <span className="text-[10px] font-bold text-neon-blue uppercase tracking-widest">{member.role}</span>
+                  </div>
+                  <h4 className="text-white font-display uppercase italic text-lg leading-none mb-1">{member.name}</h4>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Footer = () => {
   return (
     <footer className="py-16 px-6 border-t border-white/10 bg-black">
@@ -490,6 +543,7 @@ export default function App() {
       <main>
         <Hero />
         <SneakPeek />
+        <Staff />
         <AllowedMods />
         <Support />
         <ServerInfo />
