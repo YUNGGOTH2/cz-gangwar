@@ -449,7 +449,7 @@ const ServerInfo = () => {
 const Staff = () => {
   const staffMembers = [
     { name: "GrujkoBoss", role: "Server Owner", image: "https://i.imgur.com/6DyhDQB.png" },
-    { name: "Svizer", role: "Server Owner", image: "https://i.imgur.com/BW8dytD.png" },
+    { name: "Svizer", role: "Server Owner", image: "https://i.imgur.com/0uMLw9c.png" },
     { name: "YUNG", role: "Web developer", image: "https://i.imgur.com/2Elmti5.png" },
     { name: "Maki", role: "Developer", image: "https://i.imgur.com/HHFQoV2.png" },
     { name: "riri", role: "Co Owner", image: "https://i.imgur.com/1AqaP4n.png" }
