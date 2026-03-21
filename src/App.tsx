@@ -20,10 +20,12 @@ import {
   TrendingUp
 } from 'lucide-react';
 import { motion } from 'motion/react';
+import { translations, Language } from './translations';
 
 
-const Navbar = () => {
+const Navbar = ({ lang, setLang }: { lang: Language, setLang: (l: Language) => void }) => {
   const [scrolled, setScrolled] = useState(false);
+  const t = translations[lang].nav;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -46,22 +48,42 @@ const Navbar = () => {
         </div>
         
         <div className="hidden md:flex items-center gap-8 text-sm font-medium uppercase tracking-widest">
-          <a href="#home" className="hover:text-neon-blue transition-colors">Home</a>
-          <a href="#sneak-peek" className="hover:text-neon-purple transition-colors">Sneak Peek</a>
-          <a href="#mods" className="hover:text-neon-blue transition-colors">Mods</a>
-          <a href="#support" className="hover:text-neon-blue transition-colors">Support</a>
-          <a href="#server-info" className="hover:text-neon-purple transition-colors">Server Info</a>
+          <a href="#home" className="hover:text-neon-blue transition-colors">{t.home}</a>
+          <a href="#sneak-peek" className="hover:text-neon-purple transition-colors">{t.sneakPeek}</a>
+          <a href="#mods" className="hover:text-neon-blue transition-colors">{t.mods}</a>
+          <a href="#support" className="hover:text-neon-blue transition-colors">{t.support}</a>
+          <a href="#server-info" className="hover:text-neon-purple transition-colors">{t.serverInfo}</a>
         </div>
 
-        <button className="bg-white text-black px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-neon-blue hover:text-white transition-all duration-300">
-          Play Now
-        </button>
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 bg-white/5 p-1 rounded-full border border-white/10">
+            <button 
+              onClick={() => setLang('sr')}
+              className={`w-8 h-8 rounded-full overflow-hidden transition-all ${lang === 'sr' ? 'ring-2 ring-neon-blue scale-110' : 'opacity-50 hover:opacity-100'}`}
+              title="Serbian"
+            >
+              <img src="https://flagcdn.com/w80/rs.png" alt="Serbian" className="w-full h-full object-cover" />
+            </button>
+            <button 
+              onClick={() => setLang('en')}
+              className={`w-8 h-8 rounded-full overflow-hidden transition-all ${lang === 'en' ? 'ring-2 ring-neon-blue scale-110' : 'opacity-50 hover:opacity-100'}`}
+              title="English"
+            >
+              <img src="https://flagcdn.com/w80/gb.png" alt="English" className="w-full h-full object-cover" />
+            </button>
+          </div>
+
+          <button className="bg-white text-black px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-neon-blue hover:text-white transition-all duration-300">
+            {t.playNow}
+          </button>
+        </div>
       </div>
     </nav>
   );
 };
 
-const Hero = () => {
+const Hero = ({ lang }: { lang: Language }) => {
+  const t = translations[lang].hero;
   return (
     <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
@@ -87,7 +109,7 @@ const Hero = () => {
             CZ <span className="text-neon-blue text-glow-blue">Gangwar</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/60 font-light tracking-widest uppercase mb-12">
-            The Ultimate Gang War Experience
+            {t.subtitle}
           </p>
           
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
@@ -96,7 +118,7 @@ const Hero = () => {
               className="group relative px-10 py-4 bg-neon-blue text-white font-bold uppercase tracking-widest overflow-hidden transition-all hover:scale-105 active:scale-95 glow-blue"
             >
               <span className="relative z-10 flex items-center gap-2">
-                Sneak Peek <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                {t.sneakPeek} <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </span>
               <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500"></div>
             </a>
@@ -107,7 +129,7 @@ const Hero = () => {
               rel="noopener noreferrer"
               className="px-10 py-4 border border-white/20 hover:border-neon-purple hover:bg-neon-purple/10 text-white font-bold uppercase tracking-widest transition-all"
             >
-              Join Discord
+              {t.joinDiscord}
             </a>
           </div>
         </motion.div>
@@ -122,7 +144,8 @@ const Hero = () => {
   );
 };
 
-const LeaderboardMockup = () => {
+const LeaderboardMockup = ({ lang }: { lang: Language }) => {
+  const t = translations[lang].leaderboard;
   const players = [
     { rank: 1, name: "6스위져6", kills: 13, deaths: 6, kd: 2.33 },
     { rank: 2, name: "SLOWRABBIT3516", kills: 21, deaths: 11, kd: 1.75 },
@@ -140,21 +163,21 @@ const LeaderboardMockup = () => {
             <Trophy className="text-neon-blue w-4 h-4" />
           </div>
           <div>
-            <h4 className="text-[10px] font-bold text-neon-blue uppercase tracking-widest leading-none">CZ GANGWAR</h4>
-            <p className="text-[8px] text-white/40 uppercase tracking-widest">KILL LEADERBOARD</p>
+            <h4 className="text-[10px] font-bold text-neon-blue uppercase tracking-widest leading-none">{t.title}</h4>
+            <p className="text-[8px] text-white/40 uppercase tracking-widest">{t.subtitle}</p>
           </div>
         </div>
         <div className="flex gap-4 text-right">
           <div className="text-center">
-            <p className="text-[8px] text-white/40 uppercase">KILOVI</p>
+            <p className="text-[8px] text-white/40 uppercase">{t.kills}</p>
             <p className="text-xs font-bold">0</p>
           </div>
           <div className="text-center">
-            <p className="text-[8px] text-white/40 uppercase">SMRTI</p>
+            <p className="text-[8px] text-white/40 uppercase">{t.deaths}</p>
             <p className="text-xs font-bold">0</p>
           </div>
           <div className="text-center">
-            <p className="text-[8px] text-neon-blue uppercase">K/D</p>
+            <p className="text-[8px] text-neon-blue uppercase">{t.kd}</p>
             <p className="text-xs font-bold text-neon-blue">0.00</p>
           </div>
         </div>
@@ -162,10 +185,10 @@ const LeaderboardMockup = () => {
       <div className="p-2">
         <div className="grid grid-cols-12 text-[8px] font-bold text-neon-blue/60 uppercase tracking-widest mb-2 px-2">
           <div className="col-span-1">#</div>
-          <div className="col-span-6">IGRAC</div>
-          <div className="col-span-2 text-right">KILOVI</div>
-          <div className="col-span-1 text-right">SMRTI</div>
-          <div className="col-span-2 text-right">K/D</div>
+          <div className="col-span-6">{t.player}</div>
+          <div className="col-span-2 text-right">{t.kills}</div>
+          <div className="col-span-1 text-right">{t.deaths}</div>
+          <div className="col-span-2 text-right">{t.kd}</div>
         </div>
         <div className="space-y-1">
           {players.map((p) => (
@@ -180,14 +203,14 @@ const LeaderboardMockup = () => {
         </div>
       </div>
       <div className="p-2 bg-black/40 border-t border-neon-blue/10 flex justify-between items-center">
-        <span className="text-[8px] text-neon-blue/40 uppercase tracking-widest">CZ GANGWAR</span>
-        <span className="text-[8px] text-white/20 uppercase tracking-widest italic">PRITISNI ESC DA ZATVORIS</span>
+        <span className="text-[8px] text-neon-blue/40 uppercase tracking-widest">{t.title}</span>
+        <span className="text-[8px] text-white/20 uppercase tracking-widest italic">{t.close}</span>
       </div>
     </div>
   );
 };
 
-const InventoryMockup = () => {
+const InventoryMockup = ({ lang }: { lang: Language }) => {
   return (
     <div className="w-full max-w-md bg-black/60 backdrop-blur-xl border border-white/10 rounded-xl p-4 font-sans shadow-2xl mx-auto">
       <div className="flex justify-between items-center mb-4">
@@ -241,12 +264,13 @@ const InventoryMockup = () => {
   );
 };
 
-const SneakPeek = () => {
+const SneakPeek = ({ lang }: { lang: Language }) => {
+  const t = translations[lang].sneakPeek;
   return (
     <section id="sneak-peek" className="py-24 px-6 bg-[#080808]">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
-          <h2 className="font-display text-5xl uppercase italic mb-4">Sneak <span className="text-neon-blue">Peek</span></h2>
+          <h2 className="font-display text-5xl uppercase italic mb-4">{t.title} <span className="text-neon-blue">{t.titleSpan}</span></h2>
           <div className="w-24 h-1 bg-neon-blue mx-auto"></div>
         </div>
 
@@ -266,17 +290,17 @@ const SneakPeek = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
                 <div>
-                  <p className="text-white font-bold uppercase tracking-widest mb-1">Kill Leaderboard</p>
-                  <p className="text-white/60 text-xs uppercase tracking-tighter">Track your K/D and climb the ranks</p>
+                  <p className="text-white font-bold uppercase tracking-widest mb-1">{t.leaderboard}</p>
+                  <p className="text-white/60 text-xs uppercase tracking-tighter">{t.leaderboardDesc}</p>
                 </div>
               </div>
             </div>
             <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
               <h4 className="text-neon-blue font-bold uppercase tracking-widest text-sm mb-3 flex items-center gap-2">
-                <Trophy className="w-4 h-4" /> Competitive Edge
+                <Trophy className="w-4 h-4" /> {t.competitiveEdge}
               </h4>
               <p className="text-white/70 text-sm leading-relaxed">
-                Stay on top of the competition with our real-time Kill Leaderboard. Track your kills, deaths, and K/D ratio as you dominate the streets. The system ranks players dynamically, ensuring that the most skilled warriors are recognized across the entire server.
+                {t.competitiveEdgeDesc}
               </p>
             </div>
           </motion.div>
@@ -297,17 +321,17 @@ const SneakPeek = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
                 <div>
-                  <p className="text-white font-bold uppercase tracking-widest mb-1">Inventory System</p>
-                  <p className="text-white/60 text-xs uppercase tracking-tighter">Advanced grid-based gear management</p>
+                  <p className="text-white font-bold uppercase tracking-widest mb-1">{t.inventory}</p>
+                  <p className="text-white/60 text-xs uppercase tracking-tighter">{t.inventoryDesc}</p>
                 </div>
               </div>
             </div>
             <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
               <h4 className="text-neon-blue font-bold uppercase tracking-widest text-sm mb-3 flex items-center gap-2">
-                <Package className="w-4 h-4" /> System Overview
+                <Package className="w-4 h-4" /> {t.systemOverview}
               </h4>
               <p className="text-white/70 text-sm leading-relaxed">
-                Our custom-built inventory system allows for seamless gear management. Organize your weapons, armor, and consumables with a modern grid interface. Features include quick-drag functionality, detailed item stats, and real-time weight tracking to keep your loadout optimized for the gangwar.
+                {t.systemOverviewDesc}
               </p>
             </div>
           </motion.div>
@@ -317,7 +341,8 @@ const SneakPeek = () => {
   );
 };
 
-const AllowedMods = () => {
+const AllowedMods = ({ lang }: { lang: Language }) => {
+  const t = translations[lang].mods;
   const allowed = [
     "Reshade", "Tracers", "Custom Roads", "Kill Effects", 
     "Sound Pack", "Weapon Skins", "Citizen", "BloodFX", "No Water"
@@ -336,9 +361,9 @@ const AllowedMods = () => {
       
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="font-display text-5xl uppercase italic mb-4">Mod <span className="text-neon-blue">Guidelines</span></h2>
+          <h2 className="font-display text-5xl uppercase italic mb-4">{t.title} <span className="text-neon-blue">{t.titleSpan}</span></h2>
           <p className="text-white/60 max-w-2xl mx-auto">
-            We maintain a strict competitive environment. Ensure your game client follows these rules to avoid disciplinary action.
+            {t.desc}
           </p>
         </div>
 
@@ -348,7 +373,7 @@ const AllowedMods = () => {
               <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
                 <ShieldCheck className="text-green-500 w-6 h-6" />
               </div>
-              <h3 className="text-2xl font-bold uppercase italic tracking-tight">Allowed Mods</h3>
+              <h3 className="text-2xl font-bold uppercase italic tracking-tight">{t.allowed}</h3>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {allowed.map((mod, i) => (
@@ -365,7 +390,7 @@ const AllowedMods = () => {
               <div className="w-10 h-10 rounded-lg bg-neon-blue/20 flex items-center justify-center">
                 <AlertTriangle className="text-neon-blue w-6 h-6" />
               </div>
-              <h3 className="text-2xl font-bold uppercase italic tracking-tight">Forbidden Mods</h3>
+              <h3 className="text-2xl font-bold uppercase italic tracking-tight">{t.forbidden}</h3>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {forbidden.map((mod, i) => (
@@ -383,9 +408,9 @@ const AllowedMods = () => {
           whileInView={{ scale: 1, opacity: 1 }}
           className="p-8 border-2 border-neon-blue bg-neon-blue/10 rounded-3xl text-center glow-blue"
         >
-          <h4 className="text-3xl font-display uppercase italic mb-4 text-neon-blue text-glow-blue">Zero Tolerance Policy</h4>
+          <h4 className="text-3xl font-display uppercase italic mb-4 text-neon-blue text-glow-blue">{t.policyTitle}</h4>
           <p className="text-xl font-bold uppercase tracking-[0.2em] text-white">
-            ANY USE OF CHEATS RESULTS IN A <span className="text-neon-blue underline decoration-2 underline-offset-8">PERMANENT BAN</span>
+            {t.policyDesc}
           </p>
         </motion.div>
       </div>
@@ -393,18 +418,17 @@ const AllowedMods = () => {
   );
 };
 
-const Support = () => {
+const Support = ({ lang }: { lang: Language }) => {
+  const t = translations[lang].support;
   return (
     <section id="support" className="py-24 px-6 bg-[#050505]">
       <div className="max-w-4xl mx-auto text-center">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neon-blue/10 border border-neon-blue/20 text-neon-blue text-xs font-bold uppercase tracking-widest mb-8">
-          <MessageSquare className="w-4 h-4" /> Support System
+          <MessageSquare className="w-4 h-4" /> {t.badge}
         </div>
-        <h2 className="font-display text-5xl md:text-6xl uppercase italic mb-8">Need <span className="text-neon-blue">Help?</span></h2>
+        <h2 className="font-display text-5xl md:text-6xl uppercase italic mb-8">{t.title} <span className="text-neon-blue">{t.titleSpan}</span></h2>
         <p className="text-xl text-white/60 mb-12 leading-relaxed">
-          Our dedicated staff team is available 24/7 to assist you. 
-          Whether it's a technical issue, a player report, or a general question, 
-          we've got you covered through our Discord ticket system.
+          {t.desc}
         </p>
         
         <a 
@@ -413,20 +437,21 @@ const Support = () => {
           rel="noopener noreferrer"
           className="group relative inline-block px-12 py-5 bg-white text-black font-black uppercase tracking-[0.3em] text-sm overflow-hidden transition-all hover:bg-neon-blue hover:text-white glow-blue"
         >
-          <span className="relative z-10">Open Ticket</span>
+          <span className="relative z-10">{t.button}</span>
         </a>
         
-        <p className="mt-8 text-white/30 text-sm uppercase tracking-widest">Average response time: &lt; 15 minutes</p>
+        <p className="mt-8 text-white/30 text-sm uppercase tracking-widest">{t.responseTime}</p>
       </div>
     </section>
   );
 };
 
-const ServerInfo = () => {
+const ServerInfo = ({ lang }: { lang: Language }) => {
+  const t = translations[lang].serverInfo;
   const stats = [
-    { label: "Server Status", value: "Offline", icon: Activity, color: "text-neon-blue" },
-    { label: "Players", value: "0 / 64", icon: Users, color: "text-neon-purple" },
-    { label: "Server IP", value: "Under Maintenance", icon: Server, color: "text-neon-blue" }
+    { label: t.status, value: t.offline, icon: Activity, color: "text-neon-blue" },
+    { label: t.players, value: "0 / 64", icon: Users, color: "text-neon-purple" },
+    { label: t.ip, value: t.maintenance, icon: Server, color: "text-neon-blue" }
   ];
 
   return (
@@ -446,22 +471,23 @@ const ServerInfo = () => {
   );
 };
 
-const Staff = () => {
+const Staff = ({ lang }: { lang: Language }) => {
+  const t = translations[lang].staff;
   const staffMembers = [
-    { name: "GrujkoBoss", role: "Server Owner", image: "https://i.imgur.com/6DyhDQB.png" },
-    { name: "Svizer", role: "Server Owner", image: "https://i.imgur.com/0uMLw9c.png", position: "object-bottom" },
-    { name: "YUNG", role: "Web developer", image: "https://i.imgur.com/2Elmti5.png" },
-    { name: "Maki", role: "Developer", image: "https://i.imgur.com/HHFQoV2.png" },
-    { name: "riri", role: "Co Owner", image: "https://i.imgur.com/1AqaP4n.png" }
+    { name: "GrujkoBoss", role: t.roles.owner, image: "https://i.imgur.com/6DyhDQB.png" },
+    { name: "Svizer", role: t.roles.owner, image: "https://i.imgur.com/0uMLw9c.png", position: "object-bottom" },
+    { name: "YUNG", role: t.roles.webDev, image: "https://i.imgur.com/2Elmti5.png" },
+    { name: "Maki", role: t.roles.dev, image: "https://i.imgur.com/HHFQoV2.png" },
+    { name: "riri", role: t.roles.coOwner, image: "https://i.imgur.com/1AqaP4n.png" }
   ];
 
   return (
     <section id="staff" className="py-24 px-6 bg-[#050505]">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
-          <h2 className="font-display text-5xl uppercase italic mb-4">Server <span className="text-neon-blue">Owners</span></h2>
+          <h2 className="font-display text-5xl uppercase italic mb-4">{t.title} <span className="text-neon-blue">{t.titleSpan}</span></h2>
           <div className="w-24 h-1 bg-neon-blue mx-auto mb-6"></div>
-          <p className="text-white/60 max-w-2xl mx-auto uppercase tracking-widest text-xs">The team behind the ultimate gangwar experience</p>
+          <p className="text-white/60 max-w-2xl mx-auto uppercase tracking-widest text-xs">{t.desc}</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
@@ -499,7 +525,8 @@ const Staff = () => {
   );
 };
 
-const Footer = () => {
+const Footer = ({ lang }: { lang: Language }) => {
+  const t = translations[lang].footer;
   return (
     <footer className="py-16 px-6 border-t border-white/10 bg-black">
       <div className="max-w-7xl mx-auto">
@@ -529,7 +556,7 @@ const Footer = () => {
         </div>
 
         <div className="text-center text-white/20 text-[10px] uppercase tracking-[0.4em]">
-          &copy; 2026 CZ Gangwar. All rights reserved. Not affiliated with Rockstar Games or Take-Two Interactive.
+          {t.rights}
         </div>
       </div>
     </footer>
@@ -537,18 +564,20 @@ const Footer = () => {
 };
 
 export default function App() {
+  const [lang, setLang] = useState<Language>('en');
+
   return (
     <div className="min-h-screen selection:bg-neon-blue selection:text-white">
-      <Navbar />
+      <Navbar lang={lang} setLang={setLang} />
       <main>
-        <Hero />
-        <SneakPeek />
-        <Staff />
-        <AllowedMods />
-        <Support />
-        <ServerInfo />
+        <Hero lang={lang} />
+        <SneakPeek lang={lang} />
+        <Staff lang={lang} />
+        <AllowedMods lang={lang} />
+        <Support lang={lang} />
+        <ServerInfo lang={lang} />
       </main>
-      <Footer />
+      <Footer lang={lang} />
       
       <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.03] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]"></div>
     </div>
