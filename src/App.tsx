@@ -120,7 +120,7 @@ const Hero = ({ lang }: { lang: Language }) => {
             </a>
             
             <a 
-              href="https://discord.gg/YwRwyQq5"
+              href="https://discord.gg/cz-gw"
               target="_blank"
               rel="noopener noreferrer"
               className="px-10 py-4 border border-white/20 hover:border-neon-purple hover:bg-neon-purple/10 text-white font-bold uppercase tracking-widest transition-all"
@@ -590,7 +590,7 @@ const Footer = ({ lang }: { lang: Language }) => {
 
           <div className="flex items-center gap-6">
             <a 
-              href="https://discord.gg/YwRwyQq5" 
+              href="https://discord.gg/cz-gw" 
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-neon-purple hover:text-white transition-all glow-purple"
