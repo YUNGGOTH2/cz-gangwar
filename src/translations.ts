@@ -63,6 +63,14 @@ export const translations = {
         coOwner: "Co Owner"
       }
     },
+    proveraTeam: {
+      title: "Provera",
+      titleSpan: "Team",
+      desc: "The team responsible for player verification and fair play",
+      roles: {
+        head: "Head of Provera Team"
+      }
+    },
     footer: {
       rights: "© 2026 CZ Gangwar. All rights reserved. Not affiliated with Rockstar Games or Take-Two Interactive."
     },
@@ -136,6 +144,14 @@ export const translations = {
         webDev: "Web programer",
         dev: "Programer",
         coOwner: "Suvlasnik"
+      }
+    },
+    proveraTeam: {
+      title: "Provera",
+      titleSpan: "Team",
+      desc: "Tim zadužen za proveru igrača i fer plej",
+      roles: {
+        head: "Glavni za Provera Team"
       }
     },
     footer: {

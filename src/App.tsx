@@ -521,6 +521,55 @@ const Staff = ({ lang }: { lang: Language }) => {
   );
 };
 
+const ProveraTeam = ({ lang }: { lang: Language }) => {
+  const t = translations[lang].proveraTeam;
+  const members = [
+    { name: "Relax", role: t.roles.head, image: "https://i.imgur.com/FSakvRf.png" }
+  ];
+
+  return (
+    <section id="provera-team" className="py-24 px-6 bg-[#080808]">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-20">
+          <h2 className="font-display text-5xl uppercase italic mb-4">{t.title} <span className="text-neon-blue">{t.titleSpan}</span></h2>
+          <div className="w-24 h-1 bg-neon-blue mx-auto mb-6"></div>
+          <p className="text-white/60 max-w-2xl mx-auto uppercase tracking-widest text-xs">{t.desc}</p>
+        </div>
+
+        <div className="flex justify-center">
+          {members.map((member, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="group relative w-full max-w-[240px]"
+            >
+              <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/10 glow-blue transition-all group-hover:border-neon-blue/50">
+                <img 
+                  src={member.image} 
+                  alt={member.name} 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80"></div>
+                
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <div className="flex items-center gap-2 mb-1">
+                    <ShieldCheck className="w-3 h-3 text-neon-blue" />
+                    <span className="text-[10px] font-bold text-neon-blue uppercase tracking-widest">{member.role}</span>
+                  </div>
+                  <h4 className="text-white font-display uppercase italic text-lg leading-none mb-1">{member.name}</h4>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Footer = ({ lang }: { lang: Language }) => {
   const t = translations[lang].footer;
   return (
@@ -569,6 +618,7 @@ export default function App() {
         <Hero lang={lang} />
         <SneakPeek lang={lang} />
         <Staff lang={lang} />
+        <ProveraTeam lang={lang} />
         <AllowedMods lang={lang} />
         <Support lang={lang} />
         <ServerInfo lang={lang} />
