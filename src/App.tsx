@@ -449,7 +449,7 @@ const ServerInfo = () => {
 const Staff = () => {
   const staffMembers = [
     { name: "GrujkoBoss", role: "Server Owner", image: "https://i.imgur.com/6DyhDQB.png" },
-    { name: "Svizer", role: "Server Owner", image: "https://i.imgur.com/0uMLw9c.png" },
+    { name: "Svizer", role: "Server Owner", image: "https://i.imgur.com/0uMLw9c.png", position: "object-bottom" },
     { name: "YUNG", role: "Web developer", image: "https://i.imgur.com/2Elmti5.png" },
     { name: "Maki", role: "Developer", image: "https://i.imgur.com/HHFQoV2.png" },
     { name: "riri", role: "Co Owner", image: "https://i.imgur.com/1AqaP4n.png" }
@@ -478,7 +478,7 @@ const Staff = () => {
                 <img 
                   src={member.image} 
                   alt={member.name} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className={`w-full h-full object-cover ${member.position || 'object-center'} transition-transform duration-500 group-hover:scale-110`}
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80"></div>
