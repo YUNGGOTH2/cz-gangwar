@@ -64,11 +64,11 @@ export const translations = {
       }
     },
     proveraTeam: {
-      title: "Provera",
-      titleSpan: "Team",
-      desc: "The team responsible for player verification and fair play",
+      title: "PC",
+      titleSpan: "Checker",
+      desc: "The team responsible for PC checks and fair play",
       roles: {
-        head: "Head of Provera Team"
+        head: "Head of PC Checkers"
       }
     },
     footer: {
