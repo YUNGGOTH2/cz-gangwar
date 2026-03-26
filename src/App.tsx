@@ -17,9 +17,11 @@ import {
   AlertTriangle,
   Trophy,
   Package,
-  TrendingUp
+  TrendingUp,
+  X,
+  Check
 } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { translations, Language } from './translations';
 
 
@@ -52,25 +54,31 @@ const Navbar = ({ lang, setLang }: { lang: Language, setLang: (l: Language) => v
           <a href="#sneak-peek" className="hover:text-neon-purple transition-colors">{t.sneakPeek}</a>
           <a href="#mods" className="hover:text-neon-blue transition-colors">{t.mods}</a>
           <a href="#support" className="hover:text-neon-blue transition-colors">{t.support}</a>
+          <a href="#donation" className="hover:text-neon-purple transition-colors">{t.donation}</a>
           <a href="#server-info" className="hover:text-neon-purple transition-colors">{t.serverInfo}</a>
         </div>
 
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2 bg-white/5 p-1 rounded-full border border-white/10">
-            <button 
-              onClick={() => setLang('sr')}
-              className={`w-8 h-8 rounded-full overflow-hidden transition-all ${lang === 'sr' ? 'ring-2 ring-neon-blue scale-110' : 'opacity-50 hover:opacity-100'}`}
-              title="Serbian"
-            >
-              <img src="https://flagcdn.com/w80/rs.png" alt="Serbian" className="w-full h-full object-cover" />
-            </button>
-            <button 
-              onClick={() => setLang('en')}
-              className={`w-8 h-8 rounded-full overflow-hidden transition-all ${lang === 'en' ? 'ring-2 ring-neon-blue scale-110' : 'opacity-50 hover:opacity-100'}`}
-              title="English"
-            >
-              <img src="https://flagcdn.com/w80/gb.png" alt="English" className="w-full h-full object-cover" />
-            </button>
+          <div className="flex items-center gap-3 bg-white/5 p-1.5 px-3 rounded-full border border-white/10 hover:border-white/20 transition-colors group">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-white/40 group-hover:text-white/60 transition-colors hidden sm:inline">
+              {lang === 'en' ? 'Switch Language' : 'Promeni Jezik'}
+            </span>
+            <div className="flex items-center gap-2">
+              <button 
+                onClick={() => setLang('sr')}
+                className={`w-7 h-7 rounded-full overflow-hidden transition-all ${lang === 'sr' ? 'ring-2 ring-neon-blue scale-110' : 'opacity-40 hover:opacity-100'}`}
+                title={lang === 'en' ? 'Switch to Serbian' : 'Prebaci na Srpski'}
+              >
+                <img src="https://flagcdn.com/w80/rs.png" alt="Serbian" className="w-full h-full object-cover" />
+              </button>
+              <button 
+                onClick={() => setLang('en')}
+                className={`w-7 h-7 rounded-full overflow-hidden transition-all ${lang === 'en' ? 'ring-2 ring-neon-blue scale-110' : 'opacity-40 hover:opacity-100'}`}
+                title={lang === 'sr' ? 'Switch to English' : 'Prebaci na Engleski'}
+              >
+                <img src="https://flagcdn.com/w80/gb.png" alt="English" className="w-full h-full object-cover" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -102,13 +110,18 @@ const Hero = ({ lang }: { lang: Language }) => {
           transition={{ duration: 0.8 }}
         >
           <h1 className="font-display text-7xl md:text-9xl uppercase italic tracking-tighter mb-4">
-            CZ <span className="text-neon-blue text-glow-blue">Gangwar</span>
+            CZ <span className="text-neon-blue text-glow-blue animate-neon-pulse">Gangwar</span>
           </h1>
-          <p className="text-xl md:text-2xl text-white/60 font-light tracking-widest uppercase mb-12">
+          <p className="text-xl md:text-2xl text-white/60 font-light tracking-widest uppercase mb-12 leading-relaxed">
             {t.subtitle}
           </p>
           
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+          <motion.div 
+            className="flex flex-col md:flex-row items-center justify-center gap-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+          >
             <a 
               href="#sneak-peek"
               className="group relative px-10 py-4 bg-neon-blue text-white font-bold uppercase tracking-widest overflow-hidden transition-all hover:scale-105 active:scale-95 glow-blue"
@@ -123,11 +136,11 @@ const Hero = ({ lang }: { lang: Language }) => {
               href="https://discord.gg/cz-gw"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-10 py-4 border border-white/20 hover:border-neon-purple hover:bg-neon-purple/10 text-white font-bold uppercase tracking-widest transition-all"
+              className="px-10 py-4 border border-white/20 hover:border-neon-purple hover:bg-neon-purple/10 text-white font-bold uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
             >
               {t.joinDiscord}
             </a>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
 
@@ -292,10 +305,10 @@ const SneakPeek = ({ lang }: { lang: Language }) => {
               </div>
             </div>
             <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
-              <h4 className="text-neon-blue font-bold uppercase tracking-widest text-sm mb-3 flex items-center gap-2">
+              <h4 className="text-neon-blue font-bold uppercase tracking-widest text-sm mb-3 flex items-center gap-2 group-hover:text-white transition-colors">
                 <Trophy className="w-4 h-4" /> {t.competitiveEdge}
               </h4>
-              <p className="text-white/70 text-sm leading-relaxed">
+              <p className="text-white/70 text-sm leading-relaxed group-hover:text-white transition-colors">
                 {t.competitiveEdgeDesc}
               </p>
             </div>
@@ -323,10 +336,10 @@ const SneakPeek = ({ lang }: { lang: Language }) => {
               </div>
             </div>
             <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
-              <h4 className="text-neon-blue font-bold uppercase tracking-widest text-sm mb-3 flex items-center gap-2">
+              <h4 className="text-neon-blue font-bold uppercase tracking-widest text-sm mb-3 flex items-center gap-2 group-hover:text-white transition-colors">
                 <Package className="w-4 h-4" /> {t.systemOverview}
               </h4>
-              <p className="text-white/70 text-sm leading-relaxed">
+              <p className="text-white/70 text-sm leading-relaxed group-hover:text-white transition-colors">
                 {t.systemOverviewDesc}
               </p>
             </div>
@@ -358,7 +371,7 @@ const AllowedMods = ({ lang }: { lang: Language }) => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="font-display text-5xl uppercase italic mb-4">{t.title} <span className="text-neon-blue">{t.titleSpan}</span></h2>
-          <p className="text-white/60 max-w-2xl mx-auto">
+          <p className="text-white/60 max-w-2xl mx-auto leading-relaxed">
             {t.desc}
           </p>
         </div>
@@ -423,7 +436,7 @@ const Support = ({ lang }: { lang: Language }) => {
           <MessageSquare className="w-4 h-4" /> {t.badge}
         </div>
         <h2 className="font-display text-5xl md:text-6xl uppercase italic mb-8">{t.title} <span className="text-neon-blue">{t.titleSpan}</span></h2>
-        <p className="text-xl text-white/60 mb-12 leading-relaxed">
+        <p className="text-xl text-white/60 mb-12 leading-relaxed max-w-2xl mx-auto">
           {t.desc}
         </p>
         
@@ -431,7 +444,7 @@ const Support = ({ lang }: { lang: Language }) => {
           href="https://discord.gg/YwRwyQq5"
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative inline-block px-12 py-5 bg-white text-black font-black uppercase tracking-[0.3em] text-sm overflow-hidden transition-all hover:bg-neon-blue hover:text-white glow-blue"
+          className="group relative inline-block px-12 py-5 bg-white text-black font-black uppercase tracking-[0.3em] text-sm overflow-hidden transition-all hover:bg-neon-blue hover:text-white hover:scale-105 active:scale-95 glow-blue"
         >
           <span className="relative z-10">{t.button}</span>
         </a>
@@ -467,6 +480,114 @@ const ServerInfo = ({ lang }: { lang: Language }) => {
   );
 };
 
+const Donation = ({ lang }: { lang: Language }) => {
+  const t = translations[lang].donation;
+  const [selectedItem, setSelectedItem] = useState<typeof t.items[0] | null>(null);
+
+  return (
+    <section id="donation" className="py-24 px-6 bg-[#080808] relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-neon-purple/5 rounded-full blur-[120px] -z-10"></div>
+      
+      <div className="max-w-7xl mx-auto text-center">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neon-purple/10 border border-neon-purple/20 text-neon-purple text-xs font-bold uppercase tracking-widest mb-8">
+          <Coins className="w-4 h-4" /> {t.title}
+        </div>
+        <h2 className="font-display text-5xl md:text-6xl uppercase italic mb-16">{t.title} <span className="text-neon-purple">{t.titleSpan}</span></h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {t.items.map((item) => (
+            <motion.div 
+              key={item.id}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => setSelectedItem(item)}
+              className="bg-[#1a1a1e] border border-white/5 rounded-xl overflow-hidden cursor-pointer text-left transition-colors hover:border-neon-purple/30 group"
+            >
+              <div className="aspect-square bg-[#121214] flex items-center justify-center p-12 border-b border-white/5">
+                <Package className="w-24 h-24 text-neon-purple/80 group-hover:scale-110 transition-transform duration-500" strokeWidth={1.5} />
+              </div>
+              
+              <div className="p-6">
+                <h3 className="text-2xl font-bold text-white mb-1 uppercase tracking-tight">{item.title}</h3>
+                <p className="text-white/40 text-sm font-medium mb-4">{item.stock}</p>
+                
+                <div className="flex flex-wrap items-baseline gap-2">
+                  <span className="text-neon-blue font-bold text-lg">{item.price}</span>
+                  {item.oldPrice && <span className="text-white/20 line-through text-sm">{item.oldPrice}</span>}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Modal */}
+      <AnimatePresence>
+        {selectedItem && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedItem(null)}
+              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            />
+            
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-lg bg-[#121214] border border-white/10 rounded-3xl overflow-hidden shadow-2xl"
+            >
+              <button 
+                onClick={() => setSelectedItem(null)}
+                className="absolute top-6 right-6 p-2 rounded-full bg-white/5 hover:bg-white/10 text-white/60 hover:text-white transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+              
+              <div className="p-10">
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-16 h-16 bg-neon-purple/10 rounded-2xl flex items-center justify-center">
+                    <Package className="w-8 h-8 text-neon-purple" />
+                  </div>
+                  <div>
+                    <h4 className="text-2xl font-bold text-white uppercase italic tracking-tight">{selectedItem.title}</h4>
+                    <p className="text-neon-purple font-bold">{selectedItem.price}</p>
+                  </div>
+                </div>
+                
+                <div className="space-y-6 mb-10">
+                  <h5 className="text-white/40 uppercase text-xs font-bold tracking-widest">{selectedItem.detailsTitle}</h5>
+                  <ul className="space-y-4">
+                    {selectedItem.features.map((feature, i) => (
+                      <li key={i} className="flex items-center gap-3 text-white/80">
+                        <div className="w-5 h-5 rounded-full bg-neon-purple/20 flex items-center justify-center flex-shrink-0">
+                          <Check className="w-3 h-3 text-neon-purple" />
+                        </div>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <a 
+                  href={selectedItem.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full py-5 bg-neon-purple text-white font-black uppercase tracking-[0.3em] text-sm text-center rounded-xl glow-purple hover:scale-[1.02] active:scale-[0.98] transition-all"
+                >
+                  {t.button}
+                </a>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+    </section>
+  );
+};
+
 const Staff = ({ lang }: { lang: Language }) => {
   const t = translations[lang].staff;
   const staffMembers = [
@@ -483,7 +604,7 @@ const Staff = ({ lang }: { lang: Language }) => {
         <div className="text-center mb-20">
           <h2 className="font-display text-5xl uppercase italic mb-4">{t.title} <span className="text-neon-blue">{t.titleSpan}</span></h2>
           <div className="w-24 h-1 bg-neon-blue mx-auto mb-6"></div>
-          <p className="text-white/60 max-w-2xl mx-auto uppercase tracking-widest text-xs">{t.desc}</p>
+          <p className="text-white/60 max-w-2xl mx-auto uppercase tracking-widest text-xs leading-loose">{t.desc}</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
@@ -533,7 +654,7 @@ const ProveraTeam = ({ lang }: { lang: Language }) => {
         <div className="text-center mb-20">
           <h2 className="font-display text-5xl uppercase italic mb-4">{t.title} <span className="text-neon-blue">{t.titleSpan}</span></h2>
           <div className="w-24 h-1 bg-neon-blue mx-auto mb-6"></div>
-          <p className="text-white/60 max-w-2xl mx-auto uppercase tracking-widest text-xs">{t.desc}</p>
+          <p className="text-white/60 max-w-2xl mx-auto uppercase tracking-widest text-xs leading-loose">{t.desc}</p>
         </div>
 
         <div className="flex justify-center">
@@ -621,6 +742,7 @@ export default function App() {
         <ProveraTeam lang={lang} />
         <AllowedMods lang={lang} />
         <Support lang={lang} />
+        <Donation lang={lang} />
         <ServerInfo lang={lang} />
       </main>
       <Footer lang={lang} />

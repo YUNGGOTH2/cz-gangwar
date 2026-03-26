@@ -8,7 +8,8 @@ export const translations = {
       mods: "Mods",
       support: "Support",
       serverInfo: "Server Info",
-      playNow: "Play Now"
+      playNow: "Play Now",
+      donation: "Donation"
     },
     hero: {
       title: "CZ Gangwar",
@@ -74,6 +75,59 @@ export const translations = {
     footer: {
       rights: "© 2026 CZ Gangwar. All rights reserved. Not affiliated with Rockstar Games or Take-Two Interactive."
     },
+    donation: {
+      title: "Support",
+      titleSpan: "Server",
+      desc: "Support CZ Gangwar and help us keep the server running. All donations go directly towards server maintenance and development.",
+      button: "Purchase Now",
+      items: [
+        {
+          id: "donation",
+          title: "Server Donation",
+          stock: "∞ Stock",
+          price: "€5.00 - €100.00",
+          oldPrice: "",
+          detailsTitle: "What you get",
+          features: [
+            "Custom Discord Role",
+            "Exclusive In-game Tag",
+            "Priority Queue Access",
+            "Support the development"
+          ],
+          link: "https://czgangwar.mysellauth.com/product/cz-gangwar"
+        },
+        {
+          id: "organization",
+          title: "Organization",
+          stock: "∞ Stock",
+          price: "€50.00",
+          oldPrice: "€75.00",
+          detailsTitle: "Organization Benefits",
+          features: [
+            "Custom Gang/Org Name",
+            "Private Discord Channel",
+            "In-game Base/HQ",
+            "Custom Org Clothing/Items"
+          ],
+          link: "https://czgangwar.mysellauth.com/product/cz-gangwar"
+        },
+        {
+          id: "staff",
+          title: "Discord / Staff",
+          stock: "∞ Stock",
+          price: "€15.00 - €30.00",
+          oldPrice: "€20.00 - €45.00",
+          detailsTitle: "Staff/Role Perks",
+          features: [
+            "Custom Discord Role",
+            "Staff Channel Access",
+            "Special Badge",
+            "Unique Permissions"
+          ],
+          link: "https://czgangwar.mysellauth.com/product/cz-gangwar"
+        }
+      ]
+    },
     leaderboard: {
       title: "CZ GANGWAR",
       subtitle: "KILL LEADERBOARD",
@@ -91,7 +145,8 @@ export const translations = {
       mods: "Modovi",
       support: "Podrška",
       serverInfo: "Info Servera",
-      playNow: "Igraj Odmah"
+      playNow: "Igraj Odmah",
+      donation: "Donacije"
     },
     hero: {
       title: "CZ Gangwar",
@@ -156,6 +211,59 @@ export const translations = {
     },
     footer: {
       rights: "© 2026 CZ Gangwar. Sva prava zadržana. Nije povezano sa Rockstar Games ili Take-Two Interactive."
+    },
+    donation: {
+      title: "Podrži",
+      titleSpan: "Server",
+      desc: "Podržite CZ Gangwar i pomozite nam da održimo server. Sve donacije idu direktno za održavanje i razvoj servera.",
+      button: "Kupi Odmah",
+      items: [
+        {
+          id: "donation",
+          title: "Donacija Serveru",
+          stock: "∞ Na stanju",
+          price: "€5.00 - €100.00",
+          oldPrice: "",
+          detailsTitle: "Šta dobijate",
+          features: [
+            "Poseban Discord Rank",
+            "Ekskluzivan In-game Tag",
+            "Prioritet pri ulasku na server",
+            "Podrška razvoju servera"
+          ],
+          link: "https://czgangwar.mysellauth.com/product/cz-gangwar"
+        },
+        {
+          id: "organization",
+          title: "Organizacija",
+          stock: "∞ Na stanju",
+          price: "€50.00",
+          oldPrice: "€75.00",
+          detailsTitle: "Prednosti Organizacije",
+          features: [
+            "Ime Bande/Organizacije po želji",
+            "Privatni Discord Kanal",
+            "In-game Baza/HQ",
+            "Custom Odeća/Predmeti"
+          ],
+          link: "https://czgangwar.mysellauth.com/product/cz-gangwar"
+        },
+        {
+          id: "staff",
+          title: "Discord / Staff",
+          stock: "∞ Na stanju",
+          price: "€15.00 - €30.00",
+          oldPrice: "€20.00 - €45.00",
+          detailsTitle: "Staff/Role Pogodnosti",
+          features: [
+            "Poseban Discord Rank",
+            "Pristup Staff Kanalima",
+            "Specijalni Badge",
+            "Unikatne Permisije"
+          ],
+          link: "https://czgangwar.mysellauth.com/product/cz-gangwar"
+        }
+      ]
     },
     leaderboard: {
       title: "CZ GANGWAR",
